@@ -1,0 +1,67 @@
+---
+import GitHub from "./icons/GitHub.astro";
+import JournalImage from "../../public/48shots_so.png";
+import Tailwind from "./icons/Tailwind.astro";
+import NextJS from "./icons/NextJS.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+}
+const PROJECTS = [
+  {
+    title: "Oiches",
+    description:
+      "Plataforma para conectar salas de conciertos y grupos musicales. Los grupos seleccionan la sala y pueden contactar con ellos y/o hacer la reserva del espacio en las fechas disponibles. ",
+    link: "https://aithorapps.com",
+    image: "../../public/557shots_so.webp",
+    GitHub: "https://github.com/aitorz09/Oiches",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
+    title: "Travel Journal",
+    description:
+      "Aplicación web para guardar tus viajes y experiencias. Puedes añadir fotos, descripciones y ubicaciones. Tambien puedes comentar y votar las experiencias de otros usuarios.",
+    link: "https://journalthor.com",
+    image: "../../public/48shots_so.webp",
+    GitHub: "https://github.com/aitorz09/ReactTravelJournal1",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, tags, image }) => {
+    return (
+      <article>
+        <h2 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h2>
+        <p class="text-lg mb-4 text-pretty">{description}</p>
+        <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <img
+          class="rounded shadow-2xl shadow-white/10 w-[600px] mx-auto my-10"
+          src={image}
+          alt={`Captura de pantalla del proyecto ${image}`}
+        />
+      </article>
+    );
+  })
+}

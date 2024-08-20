@@ -1,0 +1,32 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+import Link from "./icons/Link.astro"
+const EXPERIENCIE = [
+  {
+    date: "Mayo 2024",
+    title: "Desarollo Full Stack, Oiches",
+    company: "HACK A BOSS",
+    description:
+      "Oiches es una aplicación web que relaciona Salas de concierto con Bandas musicales para la organización de eventos. Desarrollo de la aplicación web con React y Node.js. Desplegada con un servidor en Hetzner.",
+    link:"https://aithorapps.com",
+  },
+  {
+    date: "Enero 2024",
+    title: "Travel Journal",
+    company: "HACK A BOSS",
+    link: "https://journalthor.es",
+    description:
+      "Travel Journal es una aplicación web que permite a los usuarios guardar sus viajes y compartirlos con otros usuarios. Desarrollo de la aplicación web con React y Node.js. Desplegada con un servidor en Hetzner.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
