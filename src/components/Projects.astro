@@ -1,66 +1,105 @@
 ---
-import GitHub from "./icons/GitHub.astro";
-import JournalImage from "../../public/48shots_so.png";
+import JournalImage from "../../public/48shots_so.webp";
+import OichesImg from "../../public/557shots_so.webp";
+import ThorTypeImg from "../../public/257shots_so.png";
 import Tailwind from "./icons/Tailwind.astro";
-import NextJS from "./icons/NextJS.astro";
-
+import NodeJs from "./icons/NodeJs.astro";
+import React from "./icons/React.astro";
+import Javascript from "./icons/Javascript.astro";
+import CSS from "./icons/CSS.astro";
 const TAGS = {
   NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
+    name: "Node.js",
+    class: "bg-green-400/20 text-white",
+    icon: NodeJs,
   },
   TAILWIND: {
     name: "Tailwind CSS",
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
+  REACT:{
+    name: "React",
+    class: "bg-[#09F]/30 px-2 py-1 text-white",
+    icon: React,
+  },
+  JAVASCRIPT:{
+    name: "JavaScript",
+    class: "bg-[#F0DB4F]/30 px-2 py-1 text-white",
+    icon: Javascript,
+  },
+  CSS:{
+    name: "CSS",
+    class: "bg-[#264DE4]/30 px-2 py-1 text-white",
+    icon: CSS,
+  }
 }
 const PROJECTS = [
   {
     title: "Oiches",
     description:
-      "Plataforma para conectar salas de conciertos y grupos musicales. Los grupos seleccionan la sala y pueden contactar con ellos y/o hacer la reserva del espacio en las fechas disponibles. ",
+      "Plataforma para conectar salas de conciertos y grupos musicales. Los grupos seleccionan la sala y pueden contactar con ellos y/o hacer la reserva del espacio en las fechas disponibles. La información de los usuarios no es real pero se han usado datos *reales*  para similuar la experiencia de usuario. En Deploy",
     link: "https://aithorapps.com",
-    image: "../../public/557shots_so.webp",
+    image: OichesImg.src,
     GitHub: "https://github.com/aitorz09/Oiches",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT],
   },
   {
     title: "Travel Journal",
     description:
-      "Aplicación web para guardar tus viajes y experiencias. Puedes añadir fotos, descripciones y ubicaciones. Tambien puedes comentar y votar las experiencias de otros usuarios.",
-    link: "https://journalthor.com",
-    image: "../../public/48shots_so.webp",
+      "Aplicación web para guardar tus viajes y experiencias. Puedes añadir fotos, descripciones y ubicaciones. Tambien puedes comentar y votar las experiencias de otros usuarios la base de datos esta poblada con Faker por lo que los usuarios no son reales. En Deploy",
+    link: "https://journalthor.es",
+    image: JournalImage.src,
     GitHub: "https://github.com/aitorz09/ReactTravelJournal1",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.NEXT, TAGS.CSS, TAGS.REACT],
   },
+  {
+    title: "ThorType",
+    description:
+      "Es una aplicación web para mejorar tu velocidad de escritura con palabras relacionadas con código de programación. Puedes elegir el modo de dificultad, esta aplicación esta insiprada en MonkeyType. En Deploy",
+    link: "https://aitorz09.github.io/ThorType/",
+    image: ThorTypeImg.src,
+    GitHub: "https://github.com/aitorz09/ThorType",
+    tags: [TAGS.NEXT, TAGS.CSS, TAGS.JAVASCRIPT],
+   },
+  // {
+  //   title: "ThorCommerce",
+  //   description:"Aplicación web para comprar productos de ropa y accesorios. Puedes añadir productos al carrito, ver el detalle de los productos y realizar la compra. La base de datos esta poblada con información extraida de internet por lo que los productos no son reales. Trabajando en ello",
+  //   link: "https://aitorz09.github.io/ThorType/",
+  //   image: {OichesImg},
+  //   GitHub: "https://github.com/aitorz09/ThorType",
+  //   tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT],
+  // },
 ];
 ---
 
 {
-  PROJECTS.map(({ title, description, tags, image }) => {
+  PROJECTS.map(({ title, description, tags, image,link }) => {
     return (
-      <article>
-        <h2 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h2>
-        <p class="text-lg mb-4 text-pretty">{description}</p>
-        <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
-        <img
-          class="rounded shadow-2xl shadow-white/10 w-[600px] mx-auto my-10"
-          src={image}
-          alt={`Captura de pantalla del proyecto ${image}`}
-        />
+      <article class="flex place-items-center gap-6">
+        <div class="w-1/2">
+          <a href={link}><img
+            class="rounded shadow-2xl shadow-white/10 w-[600px] mx-auto my-10"
+            src={image}
+            alt={`Captura de pantalla del proyecto ${image}`}
+          /></a>
+        </div>
+        <div class="w-1/2">
+          <a href={link}><h2 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h2></a>
+          <ul class="flex flex-row mb-2 gap-x-2">
+            {tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                >
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-lg mb-4 text-pretty">{description}</p>
+        </div>
       </article>
     );
   })
