@@ -7,6 +7,7 @@ import NodeJs from "./icons/NodeJs.astro";
 import React from "./icons/React.astro";
 import Javascript from "./icons/Javascript.astro";
 import CSS from "./icons/CSS.astro";
+import {motion} from "framer-motion"
 const TAGS = {
   NEXT: {
     name: "Node.js",
@@ -38,8 +39,8 @@ const PROJECTS = [
   {
     title: "Oiches",
     description:
-      "Plataforma para conectar salas de conciertos y grupos musicales. Los grupos seleccionan la sala y pueden contactar con ellos y/o hacer la reserva del espacio en las fechas disponibles. La información de los usuarios no es real pero se han usado datos *reales*  para similuar la experiencia de usuario. En Deploy",
-    link: "https://aithorapps.com",
+      "Plataforma para conectar salas de conciertos y grupos musicales. Los grupos seleccionan la sala y pueden contactar con ellos y/o hacer la reserva del espacio en las fechas disponibles. En Deploy",
+    link: "https://oiches.com",
     image: OichesImg.src,
     GitHub: "https://github.com/aitorz09/Oiches",
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT],
@@ -76,15 +77,15 @@ const PROJECTS = [
 {
   PROJECTS.map(({ title, description, tags, image,link }) => {
     return (
-      <article class="flex place-items-center gap-6">
-        <div class="w-1/2">
+      <article class="flex place-items-center gap-6 flex-col lg:flex-row mx-6">
+        <motion.div client:load initial={{x:-200}} whileInView={{x:0}}  viewport={{ once: true, amount: 0.5 }}  transition={{duration:0.6}} className="w-1/2">
           <a href={link}><img
             class="rounded shadow-2xl shadow-white/10 w-[600px] mx-auto my-10"
             src={image}
             alt={`Captura de pantalla del proyecto ${image}`}
           /></a>
-        </div>
-        <div class="w-1/2">
+        </motion.div>
+        <motion.div client:load initial={{x:200}} whileInView={{x:0}}  viewport={{ once: true, amount: 0.5 }}  transition={{duration:0.6}} className="lg:w-1/2 w-full mx-6">
           <a href={link}><h2 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h2></a>
           <ul class="flex flex-row mb-2 gap-x-2">
             {tags.map((tag) => (
@@ -98,8 +99,8 @@ const PROJECTS = [
               </li>
             ))}
           </ul>
-          <p class="text-lg mb-4 text-pretty">{description}</p>
-        </div>
+          <p class="text-lg mb-4 text-wrap">{`${description}`}</p>
+        </motion.div>
       </article>
     );
   })

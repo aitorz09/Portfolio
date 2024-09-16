@@ -1,10 +1,26 @@
-<header class="flex justify-center w-full xl:[w-1120px] mx-auto items-center py-5">
-
-  <nav class="flex flex-row gap-2 sm:gap-x-10 opacity-90">
-     <a href="#top">Inicio</a>
-     <a href="#experiencia">Experiencia</a>
-     <a href="#proyectos">Proyectos</a>
-     <a href="#sobremi">Sobre mí</a>
-     <a href="#contact">Contact</a>
-  </nav>
-</header>
+---
+import Spain from "./icons/Spain.astro"
+import English from "./icons/English.astro"
+import { motion } from "framer-motion"
+---
+<motion.div 
+   client:load
+  initial={{ y: -100 }}
+  animate={{ y: 0 }} 
+  transition={{ ease: "easeOut", duration: 1 }}
+>
+   <header class="flex justify-center w-full xl:[w-1200px] mx-auto items-center py-5">
+   
+     <nav class="flex flex-row gap-2 sm:gap-x-12 opacity-90 place-items-center">
+        <a class=" hover:underline transition-all hover:text-yellow-300/90" href="#top">Inicio</a>
+        <a class=" hover:underline transition-all hover:text-yellow-300/90" href="#experiencia">Experiencia</a>
+        <a class=" hover:underline transition-all hover:text-yellow-300/90" href="#proyectos">Proyectos</a>
+        <a class="text-nowrap hover:underline transition-all hover:text-yellow-300/90" href="#sobremi">Sobre mí</a>
+        <a class=" hover:underline transition-all hover:text-yellow-300/90" href="#contact">Contact</a>
+        <!-- <div class="flex gap-6 place-items-center">
+           <Spain  width="32" height="32" class="fill-current text-red-600" />
+           <English width="32" height="32" class="fill-current text-red-600" />
+        </div> -->
+       </nav>
+   </header>
+</motion.div>

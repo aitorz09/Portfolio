@@ -1,17 +1,19 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
 import Link from "./icons/Link.astro"
+import { motion } from "framer-motion"
+
 const EXPERIENCIE = [
   {
-    date: "Mayo 2024",
+    date: "Mayo 2024 - Agosto 2024",
     title: "Desarollo Full Stack",
     company: "HACK A BOSS",
     description:
       "He desarrollado una aplicación web utilizando React, JavaScript, Node.js, Express, MySQL y Tailwind CSS. En el frontend, creé una interfaz dinámica y reusable con React, mientras que en el backend, implementé una API REST en Node.js y Express para manejar operaciones CRUD y la autenticación con JWT. Diseñé la base de datos en MySQL, optimizando las consultas para un mejor rendimiento. Además, utilicé Scrum como metodología ágil, lo que nos permitió gestionar el proyecto eficientemente, adaptarnos a los cambios y cumplir con los objetivos del cliente.",
-    link:"https://aithorapps.com",
+    link: "https://aithorapps.com",
   },
   {
-    date: "Enero 2024",
+    date: "Enero 2024 - Mayo 2024",
     title: "Desarollo Full Stack",
     company: "HACK A BOSS",
     link: "https://journalthor.es",
@@ -24,9 +26,19 @@ const EXPERIENCIE = [
 <ol class="relative mt-16">
   {
     EXPERIENCIE.map((experiencie) => (
-      <li class="">
-        <ExperienceItem {...experiencie} />
-      </li>
+    <motion.div 
+  client:load
+  initial={{ opacity:0 }} 
+  whileInView={{ opacity: 1 }} 
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  viewport={{ once: true, amount: 'all' }}
+  onViewportEnter={() => console.log("Elemento en el viewport")}
+  onViewportLeave={() => console.log("Elemento fuera del viewport")}
+>
+  <li class="">
+    <ExperienceItem {...experiencie} />
+  </li>
+</motion.div>
     ))
   }
 </ol>

@@ -17,8 +17,10 @@ const { description, title } = Astro.props
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+    <meta name="og:description" content={description} />
     <meta name="viewport" content="width=device-width" />
+    <meta property="og:title" content="Portafolio de Aitor Carreras"/>
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1WyrOQqnbULCJGiRwuo64rAvUSNZZodna=s500">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>

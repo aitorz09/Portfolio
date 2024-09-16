@@ -14,73 +14,88 @@ import Code from '../components/icons/Code.astro';
 import Projects from '../components/Projects.astro';
 import MiImagen from '../../public/1718365327416.png'
 import AboutMe from '../components/icons/AboutMe.astro'
+import {motion,useInView,useMotionValueEvent,useScroll,useTransform} from 'framer-motion'
 ---
 
 <Layout title="Portafolio de Aitor Carreras, Desarollador y Programador Web con 1 año de experiencia"
 description='Description'>
-	<main>
-		<SectionContainer class="py-36 pb-22 sm:mx-auto mx-4">
-			
-				<img class="border-e-2 rounded-full w-46 h-46 mb-6" src="https://avatars.githubusercontent.com/u/155743022?v=4&size=160" alt="Aitor Foto">
-	
-			<h1 class="text-white text-4xl font-bold flex  flex-row gap-x-12 pb-4">Hey, soy Aitor<a href="https://www.linkedin.com/in/aitor-carreras/" target="_blank" class="flex justify-center items-center">
-				<Badge>Disponible para trabajar</Badge></a></h1>
-			<h2 class="text-lg text-wrap">
-				<span class="opacity-95"></span>
-				 <span class="text-yellow-200/90 ">Desarollador Web Full Stack Junior.</span> 
-				 <span class="text-red-200">De Menorca, España.</span>
-				 <span class=" opacity-85">
-					 Con disponibilidad de translado. 
-					Especialicado en crear aplicaciones interactivas. Y con muchisimas ganas de empezar a trabajar en un equipo de desarrollo y seguir aprendiendo nuevas tecnologías.
-				 </span>
-			</h2>
-			<ul class="flex flex-col gap-x-4 sm:flex-row my-4 ">
-				<li>
-					<SocialPill href="https://linkedin.com/in/aitor-carreras">
-						<Linkedin class="size-4 md:size-6" />
-						LinkedIn
-					</SocialPill>
-				</li>
-				<li>
-					<SocialPill href="https://github.com/aitorz09">
-						<Github class="size-4 md:size-6" />
-						Github
-					</SocialPill>
-				</li>
-				<li>
+	<main> 
+		<motion.div client:load initial={{x:-1000}} animate={{x:0}} transition={{duration:0.5}} >
 
-					<SocialPill>
-						<Mailicon class="size-4 md:size-6" />
-						pqpicarreras@gmail.com
-					</SocialPill>
-				</li>
-		 </ul>
-		</SectionContainer>
+			<SectionContainer class="py-60 pb-22 sm:mx-auto mx-4 min-h-screen">
+				
+					<img class="border-e-2 lg:mx-4 rounded-full w-42 h-42  mb-6 mx-auto" src="https://avatars.githubusercontent.com/u/155743022?v=4&size=160" alt="Aitor Foto">
+		
+				<h1 class=" text-4xl font-bold flex mx-4  flex-row gap-x-12 pb-4">Hey, soy Aitor<a href="https://www.linkedin.com/in/aitor-carreras/" target="_blank" class="flex justify-center items-center">
+					<Badge>Disponible para trabajar</Badge></a></h1>
+				<h2 class="text-lg text-wrap mx-4">
+					<span class="opacity-95"></span>
+					 <span class="text-yellow-200/90 ">Desarollador Web Full Stack Junior.</span> 
+					 <span class="text-red-200">De Menorca, España.</span>
+					 <span class=" opacity-85">
+						 Con disponibilidad de translado. 
+						Especialicado en crear aplicaciones interactivas. Y con muchisimas ganas de empezar a trabajar en un equipo de desarrollo y seguir aprendiendo nuevas tecnologías.
+					 </span>
+				</h2>
+				<ul class="flex flex-col gap-x-4 sm:flex-row my-4 mx-auto gap-4 place-items-center ">
+					<li>
+						<SocialPill href="https://linkedin.com/in/aitor-carreras">
+							<Linkedin class="size-4 md:size-6" />
+							LinkedIn
+						</SocialPill>
+					</li>
+					<li>
+						<SocialPill href="https://github.com/aitorz09">
+							<Github class="size-4 md:size-6" />
+							Github
+						</SocialPill>
+					</li>
+					<li>
+	
+						<SocialPill href="mailto:pqpiacarreras@gmail.com"  >
+							<Mailicon class="size-4 md:size-6" />
+							pqpicarreras@gmail.com
+						</SocialPill>
+					</li>
+			 </ul>
+			</SectionContainer>
+		</motion.div>
+		
 		<SectionContainer class="mx-4 sm:mx-auto" id="experiencia">
-			<h2 class="text-2xl flex gap-x-4 items-center font-semibold mb-6">Experiencia<Briefcase class="size-8"></h2>
-			<Experience/>
-		</SectionContainer>
+				<motion.div client:load initial={{y:200}} whileInView={{y:0}} transition={{duration:0.5}} viewport={{once:true}}>
+
+					<h2 class="text-2xl flex gap-x-4 items-center font-semibold mb-6 justify-center lg:justify-start ">Experiencia<Briefcase class="size-8"></h2>
+				</motion.div>
+				<Experience/>
+			
+			</SectionContainer>
 		<SectionContainer class="mx-4 my-20 sm:mx-auto" id="proyectos">
-			<h2 class="text-2xl flex gap-x-4 items-center font-semibold mb-6">Proyectos<Code class="size-8"></h2>
+			<motion.div client:load initial={{x:-200}} whileInView={{x:0}} transition={{duration:0.5}} viewport={{once:true}}>
+
+				<h2 class="text-2xl flex gap-x-4 items-center font-semibold mb-6 justify-center lg:justify-start">Proyectos<Code class="size-8"></h2>
+			</motion.div>
 			<Projects/>
 		</SectionContainer>
 		<SectionContainer id="sobremi">
-			<h2 class="text-2xl flex gap-x-4 items-center font-semibold mb-6">
-				Sobre mí <AboutMe class="size-8"/>
-			</h2>
-			<article class="flex gap-4">
-				<p class="text-lg text-white opacity-90">
-					Desarrollador Web Full Stack Junior con casi 1 año de experiencia en el desarrollo de aplicaciones web interactivas y dinámicas. Me apasiona crear aplicaciones que resuelvan problemas y en las que pueda aprender. Tengo experiencia en el desarrollo de aplicaciones web utilizando
-					React, JavaScript, Node.js, Express, MySQL, HTML y CSS. 
-					<br>
-					<br>
-					He trabajado en proyectos en los que he desarrollado una interfaz dinámica y reusable con React, y he implementado una API REST en Node.js y Express para manejar operaciones CRUD y la autenticación con JWT. Además, he diseñado 
-						y optimizado bases de datos en MySQL, mejorando mi capacidad para gestionar datos de manera eficiente. Soy una persona proactiva, con capacidad para trabajar en equipo y adaptarme a los cambios. Me encanta aprender y seguir mejorando mis habilidades como desarrollador web.</br>
-				</p>
-			
-					
-				<img class="w-1/3 rounded-xl" src={MiImagen.src} alt="">
-				</article>
+			<motion.div client:load initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:1}} viewport={{once:true}}>
+
+				<h2 class="text-2xl flex gap-x-4 items-center font-semibold mb-6 justify-center lg:justify-start">
+					Sobre mí <AboutMe class="size-8"/>
+				</h2>
+				<article class="flex gap-4 flex-col lg:flex-row mx-6">
+					<p class="text-lg opacity-90">
+						Desarrollador Web Full Stack Junior con casi 1 año de experiencia en el desarrollo de aplicaciones web interactivas y dinámicas. Me apasiona crear aplicaciones que resuelvan problemas y en las que pueda aprender. Tengo experiencia en el desarrollo de aplicaciones web utilizando
+						React, JavaScript, Node.js, Express, MySQL, HTML y CSS. 
+						<br>
+						<br>
+						He trabajado en proyectos en los que he desarrollado una interfaz dinámica y reusable con React, y he implementado una API REST en Node.js y Express para manejar operaciones CRUD y la autenticación con JWT. Además, he diseñado 
+							y optimizado bases de datos en MySQL, mejorando mi capacidad para gestionar datos de manera eficiente. Soy una persona proactiva, con capacidad para trabajar en equipo y adaptarme a los cambios. Me encanta aprender y seguir mejorando mis habilidades como desarrollador web.</br>
+					</p>
+				
+						
+					<img class="lg:w-1/3 w-full rounded-xl" src={MiImagen.src} alt="">
+					</article>
+			</motion.div>
 
 		</SectionContainer>
 	</main>
